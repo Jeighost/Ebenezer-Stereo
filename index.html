@@ -3,10 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ebenezer Stereo 88.2 FM</title>
-    <link rel="icon" type="image/png" href="img/logo.png">
+    <title>Ebenezer Stereo 88.2 FM — El poder de la palabra</title>
+
+    <!-- ══════════════════════════════════════════
+         META TAGS
+    ══════════════════════════════════════════ -->
+    <meta name="description" content="Ebenezer Stereo 88.2 FM, emisora cristiana de Valledupar, Colombia. Música, reflexiones y el poder de la palabra las 24 horas.">
+    <meta name="keywords" content="Ebenezer Stereo, radio cristiana, Valledupar, 88.2 FM, Colombia">
+    <meta name="author" content="Ebenezer Stereo">
+
+    <!-- Open Graph (Facebook, WhatsApp) -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://ebenezerstereo.com/">
+    <meta property="og:title" content="Ebenezer Stereo 88.2 FM">
+    <meta property="og:description" content="Emisora cristiana de Valledupar. Música, reflexiones y el poder de la palabra.">
+    <meta property="og:image" content="https://ebenezerstereo.com/logo.png">
+
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Ebenezer Stereo 88.2 FM">
+    <meta name="twitter:description" content="Emisora cristiana de Valledupar. Música, reflexiones y el poder de la palabra.">
+    <meta name="twitter:image" content="https://ebenezerstereo.com/logo.png">
+
+    <link rel="icon" type="image/png" href="logo.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
     <style>
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -47,6 +70,11 @@
             backdrop-filter: blur(20px) saturate(1.4);
             -webkit-backdrop-filter: blur(20px) saturate(1.4);
             border-bottom: 1px solid var(--border);
+            transition: background 0.4s;
+        }
+
+        header.scrolled {
+            background: rgba(6, 14, 30, 0.97);
         }
 
         .logo-link {
@@ -87,7 +115,6 @@
             font-family: 'Cormorant Garamond', serif;
             font-size: 1.1rem;
             font-weight: 700;
-            letter-spacing: 0.01em;
             color: var(--white);
             line-height: 1;
         }
@@ -148,7 +175,6 @@
         }
 
         .drawer.open { transform: translateX(0); }
-
         .drawer-head { display: flex; justify-content: flex-end; }
 
         .drawer-x {
@@ -275,38 +301,105 @@
             background: linear-gradient(90deg, var(--blue-bright), transparent);
         }
 
+        /* Ondas de sonido animadas detrás del play */
+        .sound-waves {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 160px; height: 160px;
+            margin-bottom: 1.5rem;
+        }
+
+        .sound-waves .wave-ring {
+            position: absolute;
+            border-radius: 50%;
+            border: 1.5px solid rgba(26,108,246,0.35);
+            animation: wave-expand 2.4s ease-out infinite;
+        }
+
+        .sound-waves .wave-ring:nth-child(1) { width: 100px; height: 100px; animation-delay: 0s; }
+        .sound-waves .wave-ring:nth-child(2) { width: 130px; height: 130px; animation-delay: 0.6s; }
+        .sound-waves .wave-ring:nth-child(3) { width: 160px; height: 160px; animation-delay: 1.2s; }
+
+        @keyframes wave-expand {
+            0%   { opacity: 0.6; transform: scale(0.7); }
+            100% { opacity: 0;   transform: scale(1); }
+        }
+
         .hero-play {
+            position: relative;
+            z-index: 1;
             width: 72px; height: 72px;
             border-radius: 50%;
             background: linear-gradient(145deg, var(--blue-bright) 0%, var(--blue-mid) 100%);
             border: none;
             display: flex; align-items: center; justify-content: center;
             cursor: pointer;
-            box-shadow:
-                0 0 0 12px rgba(26,108,246,0.12),
-                0 0 0 24px rgba(26,108,246,0.06),
-                0 12px 40px rgba(26,108,246,0.55);
+            box-shadow: 0 8px 30px rgba(26,108,246,0.6);
             transition: transform 0.25s, box-shadow 0.25s;
-            margin-bottom: 2rem;
         }
 
         .hero-play:hover {
-            transform: scale(1.07);
-            box-shadow:
-                0 0 0 14px rgba(26,108,246,0.18),
-                0 0 0 28px rgba(26,108,246,0.08),
-                0 16px 50px rgba(26,108,246,0.65);
+            transform: scale(1.08);
+            box-shadow: 0 12px 40px rgba(26,108,246,0.75);
         }
 
         .hero-play svg { margin-left: 4px; }
 
         .hero-sub {
             font-size: 0.82rem;
-            font-weight: 300;
+            font-weight: 400;
             letter-spacing: 0.22em;
             text-transform: uppercase;
-            color: var(--off-white);
-            opacity: 0.5;
+            color: var(--white);
+            opacity: 0.75;
+            text-shadow: 0 1px 12px rgba(0,0,0,0.8);
+        }
+
+        /* Programa en vivo — badge sobre el hero */
+        .now-playing-badge {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(6, 14, 30, 0.75);
+            border: 1px solid rgba(26,108,246,0.3);
+            border-radius: 50px;
+            padding: 8px 16px;
+            margin-top: 2rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .now-dot {
+            width: 8px; height: 8px;
+            border-radius: 50%;
+            background: #4ade80;
+            flex-shrink: 0;
+            animation: pulse-dot 1.5s ease-in-out infinite;
+        }
+
+        @keyframes pulse-dot {
+            0%,100% { opacity: 1; transform: scale(1); }
+            50%      { opacity: 0.4; transform: scale(0.65); }
+        }
+
+        .now-text {
+            font-size: 0.72rem;
+            font-weight: 500;
+            letter-spacing: 0.06em;
+        }
+
+        .now-text span {
+            color: var(--blue-pale);
+            opacity: 0.7;
+            margin-right: 4px;
+        }
+
+        .now-text strong {
+            color: var(--white);
+            font-weight: 600;
         }
 
         .scroll-hint {
@@ -381,12 +474,152 @@
             max-width: 460px;
         }
 
+        /* Divisor entre secciones */
+        .section-divider {
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(26,108,246,0.3), transparent);
+        }
+
+        /* ═══════════════════════
+           SOBRE NOSOTROS
+        ═══════════════════════ */
+        #nosotros {
+            background: #060e1e;
+            padding: clamp(3rem, 7vw, 5rem) clamp(1.25rem, 5vw, 3rem);
+        }
+
+        .nosotros-wrap {
+            max-width: 1080px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+        }
+
+        @media (min-width: 760px) {
+            .nosotros-wrap { grid-template-columns: 1fr 1fr; align-items: center; }
+        }
+
+        .nosotros-copy { display: flex; flex-direction: column; gap: 1.25rem; }
+
+        .nosotros-copy .sec-p { max-width: 100%; }
+
+        .valores-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-top: 0.5rem;
+        }
+
+        .valor-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 1rem 1.1rem;
+            transition: background 0.2s, border-color 0.2s;
+        }
+
+        .valor-card:hover {
+            background: rgba(26,108,246,0.08);
+            border-color: rgba(26,108,246,0.25);
+        }
+
+        .valor-title {
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 4px;
+            letter-spacing: 0.03em;
+        }
+
+        .valor-desc {
+            font-size: 0.73rem;
+            color: var(--off-white);
+            opacity: 0.55;
+            line-height: 1.5;
+        }
+
+        /* Stats con contador animado */
+        .stats-row {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+            padding: 1.5rem 0;
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .stat-item { display: flex; flex-direction: column; gap: 2px; }
+
+        .stat-num {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--blue-bright);
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-size: 0.68rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--off-white);
+            opacity: 0.5;
+        }
+
+        /* Mapa / info visual lado derecho */
+        .nosotros-visual {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .info-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.25rem 1.5rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+            transition: background 0.2s;
+        }
+
+        .info-card:hover { background: rgba(26,108,246,0.07); }
+
+        .info-icon {
+            width: 38px; height: 38px;
+            border-radius: 9px;
+            background: rgba(26,108,246,0.12);
+            border: 1px solid rgba(26,108,246,0.2);
+            display: flex; align-items: center; justify-content: center;
+            flex-shrink: 0;
+            color: var(--blue-light);
+        }
+
+        .info-text strong {
+            display: block;
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--white);
+            margin-bottom: 3px;
+        }
+
+        .info-text span {
+            font-size: 0.75rem;
+            color: var(--off-white);
+            opacity: 0.55;
+            line-height: 1.5;
+        }
+
         /* ═══════════════════════
            EMISORAS
         ═══════════════════════ */
         #emisoras {
             background: var(--blue-deep);
-            padding: clamp(4rem, 10vw, 7rem) clamp(1.25rem, 5vw, 3rem);
+            padding: clamp(3rem, 7vw, 5rem) clamp(1.25rem, 5vw, 3rem);
         }
 
         .emisoras-wrap {
@@ -459,7 +692,7 @@
         ═══════════════════════ */
         #podcast {
             background: #071024;
-            padding: clamp(4rem, 10vw, 7rem) clamp(1.25rem, 5vw, 3rem);
+            padding: clamp(3rem, 7vw, 5rem) clamp(1.25rem, 5vw, 3rem);
         }
 
         .podcast-wrap {
@@ -475,7 +708,6 @@
         }
 
         .podcast-copy { display: flex; flex-direction: column; gap: 1.25rem; }
-
         .kicker-tags { display: flex; gap: 8px; flex-wrap: wrap; }
 
         .kicker-tag {
@@ -491,10 +723,11 @@
         }
 
         .podcast-player-card {
-            border: 1px solid var(--border);
-            border-radius: 14px;
+            border: 1px solid rgba(26,108,246,0.2);
+            border-radius: 16px;
             overflow: hidden;
-            background: rgba(255,255,255,0.03);
+            background: rgba(26,108,246,0.05);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.3);
         }
 
         .podcast-player-card iframe {
@@ -505,10 +738,11 @@
         }
 
         .sc-credit {
-            padding: 10px 16px;
+            padding: 12px 18px;
             font-size: 0.72rem;
-            color: rgba(168,196,255,0.45);
-            border-top: 1px solid var(--border);
+            color: rgba(168,196,255,0.5);
+            border-top: 1px solid rgba(26,108,246,0.15);
+            background: rgba(0,0,0,0.15);
         }
 
         .sc-credit a {
@@ -520,24 +754,20 @@
         .sc-credit a:hover { color: var(--white); }
 
         /* ═══════════════════════
-           PROGRAMACION
+           PROGRAMACIÓN
         ═══════════════════════ */
         #programacion {
             background: var(--blue-deep);
-            padding: clamp(4rem, 10vw, 7rem) clamp(1.25rem, 5vw, 3rem);
+            padding: clamp(3rem, 7vw, 5rem) clamp(1.25rem, 5vw, 3rem);
         }
 
         .prog-wrap { max-width: 1080px; margin: 0 auto; }
-
         .prog-head { margin-bottom: 2.5rem; }
 
         .prog-grid {
             display: grid;
             grid-template-columns: 1fr;
-            gap: 1px;
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            overflow: hidden;
+            gap: 8px;
         }
 
         @media (min-width: 560px) {
@@ -549,36 +779,87 @@
         }
 
         .prog-item {
-            background: rgba(255,255,255,0.025);
+            background: rgba(255,255,255,0.04);
             border: 1px solid var(--border);
-            padding: 1.25rem 1.5rem;
-            transition: background 0.2s;
+            border-left: 3px solid var(--blue-bright);
+            border-radius: 10px;
+            padding: 1.1rem 1.25rem;
+            transition: background 0.2s, border-left-color 0.2s, transform 0.2s;
+            position: relative;
+            overflow: hidden;
         }
 
-        .prog-item:hover { background: rgba(26,108,246,0.07); }
+        /* Shimmer hover */
+        .prog-item::after {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%;
+            width: 60%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.04), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .prog-item:hover::after { left: 150%; }
+
+        .prog-item:hover {
+            background: rgba(26,108,246,0.1);
+            transform: translateY(-2px);
+        }
+
+        /* Programa activo ahora */
+        .prog-item.active-now {
+            border-left-color: #4ade80;
+            background: rgba(74,222,128,0.07);
+        }
+
+        .prog-item.active-now .prog-time { color: #4ade80; }
+
+        .now-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            background: rgba(74,222,128,0.15);
+            border: 1px solid rgba(74,222,128,0.3);
+            border-radius: 50px;
+            padding: 2px 8px;
+            font-size: 0.6rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: #4ade80;
+            margin-bottom: 6px;
+        }
+
+        .now-badge-dot {
+            width: 5px; height: 5px;
+            border-radius: 50%;
+            background: #4ade80;
+            animation: pulse-dot 1.5s ease-in-out infinite;
+        }
 
         .prog-time {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 1.5rem;
+            font-size: 1.6rem;
             font-weight: 700;
-            color: var(--blue-bright);
+            color: var(--white);
             line-height: 1;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
         }
 
         .prog-name {
-            font-size: 0.82rem;
+            font-size: 0.84rem;
             font-weight: 600;
             color: var(--white);
             line-height: 1.4;
-            margin-bottom: 3px;
+            margin-bottom: 4px;
         }
 
         .prog-host {
             font-size: 0.72rem;
             font-weight: 400;
-            color: var(--off-white);
-            opacity: 0.45;
+            color: var(--blue-pale);
+            opacity: 0.6;
         }
 
         /* ═══════════════════════
@@ -595,14 +876,12 @@
             -webkit-backdrop-filter: blur(24px) saturate(1.5);
             border: 1px solid rgba(26,108,246,0.22);
             border-radius: 56px;
-            box-shadow:
-                0 24px 60px rgba(0,0,0,0.7),
-                0 0 0 1px rgba(168,196,255,0.04) inset;
+            box-shadow: 0 24px 60px rgba(0,0,0,0.7), 0 0 0 1px rgba(168,196,255,0.04) inset;
             padding: 8px 14px 8px 8px;
             display: flex;
             align-items: center;
             gap: 10px;
-            z-index: 800;
+            z-index: 999;
         }
 
         .pl-logo {
@@ -612,15 +891,13 @@
         }
 
         .pl-logo img {
-    position: absolute;
-    top: 3px;
-    left: 3px;
-    width: 38px;
-    height: 38px;
-    border-radius: 50%;
-    object-fit: cover;
-    z-index: 2;
-}
+            position: absolute;
+            top: 3px; left: 3px;
+            width: 38px; height: 38px;
+            border-radius: 50%;
+            object-fit: cover;
+            z-index: 2;
+        }
 
         .pl-ring {
             position: absolute;
@@ -641,17 +918,10 @@
             z-index: 1;
         }
 
-        .pl-spin.on {
-            opacity: 1;
-            animation: ringspin 1.6s linear infinite;
-        }
+        .pl-spin.on { opacity: 1; animation: ringspin 1.6s linear infinite; }
 
         @keyframes ringspin { to { transform: rotate(360deg); } }
-        
-        @keyframes discospin {
-    from { transform: rotate(0deg); }
-    to   { transform: rotate(360deg); }
-}
+        @keyframes discospin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
 
         .pl-info { flex: 1; min-width: 0; }
 
@@ -703,6 +973,55 @@
         .pl-btn.primary:hover { background: #3d8bff; box-shadow: 0 0 24px rgba(26,108,246,0.7); }
 
         /* ═══════════════════════
+           WHATSAPP FLOTANTE
+        ═══════════════════════ */
+        #whatsapp-btn {
+            position: fixed;
+            bottom: 90px;
+            right: 20px;
+            width: 52px; height: 52px;
+            border-radius: 50%;
+            background: #25d366;
+            border: none;
+            display: flex; align-items: center; justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 4px 20px rgba(37,211,102,0.45);
+            z-index: 998;
+            text-decoration: none;
+            transition: transform 0.2s, box-shadow 0.2s;
+            animation: wa-bounce 3s ease-in-out infinite;
+        }
+
+        #whatsapp-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 28px rgba(37,211,102,0.65);
+            animation: none;
+        }
+
+        @keyframes wa-bounce {
+            0%,100% { transform: translateY(0); }
+            50%      { transform: translateY(-5px); }
+        }
+
+        .wa-tooltip {
+            position: absolute;
+            right: 62px;
+            background: rgba(6,14,30,0.95);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 6px 12px;
+            font-size: 0.72rem;
+            font-weight: 500;
+            color: var(--white);
+            white-space: nowrap;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.2s;
+        }
+
+        #whatsapp-btn:hover .wa-tooltip { opacity: 1; }
+
+        /* ═══════════════════════
            FOOTER
         ═══════════════════════ */
         footer {
@@ -714,13 +1033,31 @@
         .footer-in {
             max-width: 1080px;
             margin: 0 auto;
-            display: flex;
-            flex-direction: column;
-            gap: 2rem;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2.5rem;
         }
 
         @media (min-width: 640px) {
-            .footer-in { flex-direction: row; justify-content: space-between; align-items: flex-start; }
+            .footer-in { grid-template-columns: 1fr 1fr 1fr; align-items: start; }
+        }
+
+        .ft-col-title {
+            font-size: 0.68rem;
+            font-weight: 700;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: var(--blue-bright);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .ft-col-title::before {
+            content: '';
+            width: 16px; height: 1px;
+            background: var(--blue-bright);
         }
 
         .ft-name {
@@ -738,21 +1075,56 @@
             line-height: 1.8;
         }
 
-        .ft-social { display: flex; gap: 10px; margin-top: 1.25rem; }
+        .ft-social { display: flex; gap: 12px; margin-top: 1.5rem; }
 
         .ft-soc {
-            width: 38px; height: 38px;
-            border-radius: 8px;
-            border: 1px solid var(--border);
-            background: var(--surface);
+            width: 44px; height: 44px;
+            border-radius: 10px;
+            border: 1px solid rgba(168,196,255,0.2);
+            background: rgba(255,255,255,0.06);
             display: flex; align-items: center; justify-content: center;
-            color: var(--off-white);
+            color: var(--white);
             text-decoration: none;
-            opacity: 0.6;
-            transition: opacity 0.2s, border-color 0.2s, background 0.2s;
+            opacity: 0.75;
+            transition: opacity 0.2s, border-color 0.2s, background 0.2s, transform 0.2s;
         }
 
-        .ft-soc:hover { opacity: 1; border-color: rgba(26,108,246,0.4); background: rgba(26,108,246,0.1); }
+        .ft-soc:hover {
+            opacity: 1;
+            border-color: rgba(26,108,246,0.5);
+            background: rgba(26,108,246,0.15);
+            transform: translateY(-2px);
+        }
+
+        .ft-links { display: flex; flex-direction: column; gap: 0; }
+
+        .ft-links a {
+            display: block;
+            padding: 0.6rem 0;
+            border-bottom: 1px solid var(--border);
+            font-size: 0.8rem;
+            color: var(--off-white);
+            opacity: 0.55;
+            text-decoration: none;
+            transition: opacity 0.2s, padding-left 0.2s, color 0.2s;
+        }
+
+        .ft-links a:last-child { border-bottom: none; }
+        .ft-links a:hover { opacity: 1; color: var(--white); padding-left: 6px; }
+
+        .ft-contact { display: flex; flex-direction: column; gap: 10px; }
+
+        .ft-contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            font-size: 0.78rem;
+            color: var(--off-white);
+            opacity: 0.55;
+            line-height: 1.5;
+        }
+
+        .ft-contact-item svg { flex-shrink: 0; margin-top: 2px; color: var(--blue-light); }
 
         .footer-copy {
             margin-top: 2.5rem;
@@ -763,6 +1135,9 @@
             opacity: 0.3;
             text-align: center;
             letter-spacing: 0.06em;
+            max-width: 1080px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         /* ═══════════════════════
@@ -782,19 +1157,20 @@
 </head>
 <body>
 
-<header>
+<header id="site-header">
     <a href="#inicio" class="logo-link">
         <div class="logo-img-wrap">
             <img src="logo.png" alt="Ebenezer Stereo">
         </div>
         <div class="logo-copy">
             <span class="name">Ebenezer Stereo</span>
-            <span class="freq">88.2 FM · Valledupar</span>
+            <span class="freq">88.2 FM · La paz</span>
         </div>
     </a>
 
     <nav class="desk">
         <a href="#inicio">Inicio</a>
+        <a href="#nosotros">Nosotros</a>
         <a href="#podcast">Podcast</a>
         <a href="#programacion">Programación</a>
         <a href="#emisoras">Territorios Al Aire</a>
@@ -821,6 +1197,7 @@
     </div>
     <nav>
         <a href="#inicio">Inicio</a>
+        <a href="#nosotros">Nosotros</a>
         <a href="#podcast">Podcast</a>
         <a href="#programacion">Programación</a>
         <a href="#emisoras">Territorios Al Aire</a>
@@ -829,6 +1206,7 @@
 
 <main>
 
+    <!-- HERO -->
     <section id="inicio">
         <div class="hero-photo"></div>
         <div class="hero-overlay"></div>
@@ -837,12 +1215,27 @@
             <div class="hero-eyebrow">Bienvenidos a</div>
             <h1 class="hero-title">
                 Ebenezer Stereo<br>
-                <span class="hl">88.2 Fm.</span>
+                <span class="hl">88.2 Fm/online.</span>
             </h1>
-            <button class="hero-play" id="hero-play" aria-label="Reproducir en vivo">
-                <svg width="26" height="26" viewBox="0 0 24 24" fill="#fff"><polygon points="5,3 19,12 5,21"/></svg>
-            </button>
+
+            <div class="sound-waves">
+                <div class="wave-ring"></div>
+                <div class="wave-ring"></div>
+                <div class="wave-ring"></div>
+                <button class="hero-play" id="hero-play" aria-label="Reproducir en vivo">
+                    <svg width="26" height="26" viewBox="0 0 24 24" fill="#fff"><polygon points="5,3 19,12 5,21"/></svg>
+                </button>
+            </div>
+
             <p class="hero-sub">El poder de la palabra.</p>
+
+            <div class="now-playing-badge" id="now-badge">
+                <div class="now-dot"></div>
+                <div class="now-text">
+                    <span>Ahora:</span>
+                    <strong id="now-program-name">Cargando...</strong>
+                </div>
+            </div>
         </div>
 
         <div class="scroll-hint">
@@ -851,6 +1244,108 @@
         </div>
     </section>
 
+    <div class="section-divider"></div>
+
+    <!-- SOBRE NOSOTROS -->
+    <section id="nosotros">
+        <div class="nosotros-wrap">
+            <div class="nosotros-copy r">
+                <div class="sec-label">Quiénes Somos</div>
+                <h2 class="sec-h2">La voz de<br>Cesar</h2>
+                <p class="sec-p">
+                    <!-- descripción de la emisora -->
+                    Ebenezer Stereo 88.2 FM es una emisora cristiana comunitaria ubicada en la paz, Colombia. Desde nuestra fundación hemos sido un espacio de reflexión, música y esperanza para toda la región del Cesar.
+                </p>
+                <p class="sec-p">
+                    <!-- misión -->
+                    Nuestra misión es llevar el mensaje de fe y transformación a cada hogar, siendo un puente entre la comunidad y los valores que edifican familias.
+                </p>
+
+                <div class="stats-row">
+                    <!-- números reales -->
+                    <div class="stat-item">
+                        <div class="stat-num" data-target="15">0</div>
+                        <div class="stat-label">Años al aire</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-num" data-target="150">0</div>
+                        <div class="stat-label">Emisoras ganadoras</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-num">88.2</div>
+                        <div class="stat-label">FM La paz</div>
+                    </div>
+                </div>
+
+                <div class="valores-grid">
+                    <!-- valores o pilares -->
+                    <div class="valor-card">
+                        <div class="valor-title">Fe</div>
+                        <div class="valor-desc">Fundados en principios bíblicos y espirituales</div>
+                    </div>
+                    <div class="valor-card">
+                        <div class="valor-title">Comunidad</div>
+                        <div class="valor-desc">Conectando familias del Cesar y Colombia</div>
+                    </div>
+                    <div class="valor-card">
+                        <div class="valor-title">Verdad</div>
+                        <div class="valor-desc">Información veraz y contenido edificante</div>
+                    </div>
+                    <div class="valor-card">
+                        <div class="valor-title">Servicio</div>
+                        <div class="valor-desc">Al servicio de la voz de nuestra región</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="nosotros-visual r d2">
+                <!-- datos de contacto reales -->
+                <div class="info-card">
+                    <div class="info-icon">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                    </div>
+                    <div class="info-text">
+                        <strong>Ubicación</strong>
+                        <span><!-- ubicación --> La paz, Cesar, Colombia</span>
+                    </div>
+                </div>
+                <div class="info-card">
+                    <div class="info-icon">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.59 3.41 2 2 0 0 1 3.56 1h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.5a16 16 0 0 0 6 6l.96-.96a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 21.73 16z"/></svg>
+                    </div>
+                    <div class="info-text">
+                        <strong>Teléfono</strong>
+                        <span>
+                          <!-- numero -->
+                          +57 3177328800 
+                        </span>
+                    </div>
+                </div>
+                <div class="info-card">
+                    <div class="info-icon">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                    </div>
+                    <div class="info-text">
+                        <strong>Correo</strong>
+                        <span><!-- EDITAR --> contacto@ebenezerstereo.com</span>
+                    </div>
+                </div>
+                <div class="info-card">
+                    <div class="info-icon">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                    </div>
+                    <div class="info-text">
+                        <strong>Horario de transmisión</strong>
+                        <span>Lunes a viernes · 5:00 am — 8:00 pm</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- EMISORAS GANADORAS -->
     <section id="emisoras">
         <div class="emisoras-wrap">
             <div class="emisoras-copy r">
@@ -861,13 +1356,6 @@
                     <strong style="color:var(--white);font-weight:600">Territorios al Aire 2025</strong>
                     del Ministerio de las TIC de Colombia.
                 </p>
-                <div class="achievement-pill r d1">
-                    <div class="num">150</div>
-                    <div class="desc">
-                        <strong>Emisoras ganadoras</strong>
-                        Ministerio TIC · Colombia 2025
-                    </div>
-                </div>
             </div>
             <div class="emisoras-img-col r d2">
                 <img src="150Emisoras.jpg" alt="Territorios al Aire 2025 — 150 Emisoras Ganadoras">
@@ -875,6 +1363,9 @@
         </div>
     </section>
 
+    <div class="section-divider"></div>
+
+    <!-- PODCASTS -->
     <section id="podcast">
         <div class="podcast-wrap">
             <div class="podcast-copy r">
@@ -904,12 +1395,15 @@
         </div>
     </section>
 
+    <div class="section-divider"></div>
+
+    <!-- PROGRAMACIÓN -->
     <section id="programacion">
         <div class="prog-wrap">
             <div class="prog-head r">
                 <div class="sec-label">Horarios</div>
                 <h2 class="sec-h2">Programación</h2>
-                <p class="sec-p" style="margin-top:0.75rem;">De lunes a viernes, 5:00 am — 8:00 pm</p>
+                <p class="sec-p" style="margin-top:0.75rem;">De lunes a viernes, 5:00 am — 8:00 pm · Hora Colombia</p>
             </div>
             <div class="prog-grid" id="prog-grid"></div>
         </div>
@@ -942,93 +1436,193 @@
     </div>
 </div>
 
+<!-- WHATSAPP FLOTANTE -->
+<a id="whatsapp-btn"
+   href="https://wa.me/573177328800?text=Hola%2C%20quiero%20saber%20m%C3%A1s%20sobre%20Ebenezer%20Stereo%2088.2%20FM"
+   target="_blank"
+   aria-label="Contactar por WhatsApp">
+    <span class="wa-tooltip">Escríbenos</span>
+    <svg width="26" height="26" viewBox="0 0 24 24" fill="white">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+    </svg>
+</a>
+
 <audio id="stream" preload="none"></audio>
 
+<!-- FOOTER -->
 <footer>
     <div class="footer-in">
+        <!-- Columna 1: Marca -->
         <div class="footer-brand">
+            <div class="ft-col-title">Emisora</div>
             <div class="ft-name">Ebenezer Stereo 88.2 FM</div>
             <p>
-                Valledupar, Colombia<br>
-                Horario: 05:00 am — 08:00 pm<br>
-                &copy; 2025 Ebenezer Stereo. Todos los derechos reservados.
+                Emisora cristiana comunitaria<br>
+                <!-- EDITAR --> La paz, Cesar, Colombia
             </p>
             <div class="ft-social">
                 <a href="https://facebook.com/ebenezercentral" target="_blank" aria-label="Facebook" class="ft-soc">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
                 </a>
                 <a href="https://youtube.com/@ebenezercentral" target="_blank" aria-label="YouTube" class="ft-soc">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="#060e1e"/></svg>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="#060e1e"/></svg>
                 </a>
             </div>
         </div>
+
+        <!-- Columna 2: Links rápidos -->
+        <div>
+            <div class="ft-col-title">Navegación</div>
+            <div class="ft-links">
+                <a href="#inicio">Inicio</a>
+                <a href="#nosotros">Quiénes somos</a>
+                <a href="#podcast">Podcasts</a>
+                <a href="#programacion">Programación</a>
+                <a href="#emisoras">Territorios Al Aire</a>
+            </div>
+        </div>
+
+        <!-- Columna 3: Contacto -->
+        <div>
+            <div class="ft-col-title">Contacto</div>
+            <div class="ft-contact">
+                <!-- EDITAR: datos reales -->
+                <div class="ft-contact-item">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                    La paz, Cesar, Colombia
+                </div>
+                <div class="ft-contact-item">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.59 3.41 2 2 0 0 1 3.56 1h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.5a16 16 0 0 0 6 6l.96-.96a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 21.73 16z"/></svg>
+                    +57 3177328800
+                </div>
+                <div class="ft-contact-item">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                    contacto@ebenezerstereo.com
+                </div>
+                <div class="ft-contact-item">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                    Lun–Vie · 5:00 am — 8:00 pm
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="footer-copy">Valledupar &middot; Colombia &middot; 88.2 FM</div>
+    <div class="footer-copy">&copy; 2025 Ebenezer Stereo · La paz · Colombia · 88.2 FM · Todos los derechos reservados</div>
 </footer>
 
-<script src="programacion.js" onerror="loadSchedule()"></script>
 <script>
-    /* ── Programación ── */
-    function loadSchedule() {
-        const items = [
-            { time: '05:00', name: 'Devocional Matutino',    host: 'Apertura' },
-            { time: '06:00', name: 'Buenos Días',             host: 'Informativo local' },
-            { time: '08:00', name: 'La Voz de la Educación', host: 'Podcast educativo' },
-            { time: '10:00', name: 'Alabanza y Adoración',   host: 'Música cristiana' },
-            { time: '12:00', name: 'Al Mediodía',            host: 'Reflexión' },
-            { time: '14:00', name: 'Territorios Al Aire',    host: 'Comunidad' },
-            { time: '17:00', name: 'La Tarde Contigo',       host: 'Magazine' },
-            { time: '19:00', name: 'Cierre del Día',         host: 'Oración' },
-        ];
-        const g = document.getElementById('prog-grid');
-        if (!g) return;
-        g.innerHTML = items.map(i => `
-            <div class="prog-item r">
-                <div class="prog-time">${i.time}</div>
-                <div class="prog-name">${i.name}</div>
-                <div class="prog-host">${i.host}</div>
+/* ══════════════════════════════════════════════
+   PROGRAMACIÓN 
+   Formato: { time: 'HH:MM', end: 'HH:MM', name: '...', host: '...' }
+══════════════════════════════════════════════ */
+const SCHEDULE = [
+    { time: '05:00', end: '06:00', name: 'Devocional Matutino',    host: 'Apertura' },
+    { time: '06:00', end: '08:00', name: 'Buenos Días Cesar', host: 'Informativo local' },
+    { time: '08:00', end: '10:00', name: 'La Voz de la Educación', host: 'Podcast educativo' },
+    { time: '10:00', end: '12:00', name: 'Alabanza y Adoración',   host: 'Música cristiana' },
+    { time: '12:00', end: '14:00', name: 'Al Mediodía',            host: 'Reflexión' },
+    { time: '14:00', end: '17:00', name: 'Territorios Al Aire',    host: 'Comunidad' },
+    { time: '17:00', end: '19:00', name: 'La Tarde Contigo',       host: 'Magazine' },
+    { time: '19:00', end: '20:00', name: 'Cierre del Día',         host: 'Oración' },
+];
+
+/* ── Hora Colombia (UTC-5) ── */
+function getColombiaMinutes() {
+    const now = new Date();
+    const col = new Date(now.toLocaleString('en-US', { timeZone: 'America/Bogota' }));
+    return col.getHours() * 60 + col.getMinutes();
+}
+
+function timeToMinutes(t) {
+    const [h, m] = t.split(':').map(Number);
+    return h * 60 + m;
+}
+
+function getCurrentProgram() {
+    const now = getColombiaMinutes();
+    return SCHEDULE.find(p =>
+        now >= timeToMinutes(p.time) && now < timeToMinutes(p.end)
+    ) || null;
+}
+
+/* ── Render programación ── */
+function renderSchedule() {
+    const grid = document.getElementById('prog-grid');
+    if (!grid) return;
+    const current = getCurrentProgram();
+
+    grid.innerHTML = SCHEDULE.map(p => {
+        const isActive = current && current.time === p.time;
+        return `
+            <div class="prog-item r${isActive ? ' active-now' : ''}">
+                ${isActive ? `<div class="now-badge"><div class="now-badge-dot"></div>En vivo ahora</div>` : ''}
+                <div class="prog-time">${p.time}</div>
+                <div class="prog-name">${p.name}</div>
+                <div class="prog-host">${p.host}</div>
             </div>
-        `).join('');
-        initReveal();
-    }
+        `;
+    }).join('');
 
-    setTimeout(() => {
-        const g = document.getElementById('prog-grid');
-        if (g && !g.children.length) loadSchedule();
-    }, 400);
+    initReveal();
+}
 
-    /* ── Drawer ── */
-    const ham = document.getElementById('ham');
-    const drawer = document.getElementById('drawer');
-    const ov = document.getElementById('ov');
-    const dx = document.getElementById('drawer-x');
+/* ── Badge "Ahora" en el hero ── */
+function updateNowBadge() {
+    const p = getCurrentProgram();
+    const el = document.getElementById('now-program-name');
+    if (el) el.textContent = p ? p.name : 'Ebenezer Stereo 88.2 FM';
+}
 
-    const openD  = () => { drawer.classList.add('open');  ov.classList.add('show');  document.body.style.overflow = 'hidden'; };
-    const closeD = () => { drawer.classList.remove('open'); ov.classList.remove('show'); document.body.style.overflow = ''; };
+/* ── Contador animado de stats ── */
+function animateCounters() {
+    document.querySelectorAll('.stat-num[data-target]').forEach(el => {
+        const target = parseInt(el.dataset.target);
+        const duration = 1800;
+        const step = target / (duration / 16);
+        let current = 0;
+        const timer = setInterval(() => {
+            current += step;
+            if (current >= target) { current = target; clearInterval(timer); }
+            el.textContent = Math.floor(current);
+        }, 16);
+    });
+}
 
-    ham.addEventListener('click', openD);
-    dx.addEventListener('click', closeD);
-    ov.addEventListener('click', closeD);
-    drawer.querySelectorAll('a').forEach(a => a.addEventListener('click', closeD));
+/* ── Header scroll oscuro ── */
+window.addEventListener('scroll', () => {
+    document.getElementById('site-header').classList.toggle('scrolled', window.scrollY > 60);
+});
 
-    /* ── Audio Player ── */
-    const audio   = document.getElementById('stream');
-    const plPlay  = document.getElementById('pl-play');
-    const plMute  = document.getElementById('pl-mute');
-    const plIcon  = document.getElementById('pl-icon');
-    const plState = document.getElementById('pl-state');
-    const plSpin  = document.getElementById('pl-spin');
+/* ── Drawer ── */
+const ham    = document.getElementById('ham');
+const drawer = document.getElementById('drawer');
+const ov     = document.getElementById('ov');
+const dx     = document.getElementById('drawer-x');
 
-    const STREAM = 'https://sonic.paulatina.co/7128/stream';
+const openD  = () => { drawer.classList.add('open');    ov.classList.add('show');    document.body.style.overflow = 'hidden'; };
+const closeD = () => { drawer.classList.remove('open'); ov.classList.remove('show'); document.body.style.overflow = ''; };
 
-    const PLAY_SVG  = '<polygon points="5,3 19,12 5,21"/>';
-    const PAUSE_SVG = '<path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>';
-    const VOL_ON    = '<path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.06c1.48-.73 2.5-2.25 2.5-4.03z"/>';
-    const VOL_OFF   = '<path d="M3 9v6h4l5 5V4L7 9H3z"/><line x1="23" y1="9" x2="17" y2="15" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><line x1="17" y1="9" x2="23" y2="15" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>';
+ham.addEventListener('click', openD);
+dx.addEventListener('click', closeD);
+ov.addEventListener('click', closeD);
+drawer.querySelectorAll('a').forEach(a => a.addEventListener('click', closeD));
 
-    let playing = false, muted = false;
+/* ── Audio Player ── */
+const audio   = document.getElementById('stream');
+const plPlay  = document.getElementById('pl-play');
+const plMute  = document.getElementById('pl-mute');
+const plIcon  = document.getElementById('pl-icon');
+const plState = document.getElementById('pl-state');
+const plSpin  = document.getElementById('pl-spin');
 
-    function setPlay(on) {
+const STREAM   = 'https://sonic.paulatina.co/7128/stream';
+const PLAY_SVG  = '<polygon points="5,3 19,12 5,21"/>';
+const PAUSE_SVG = '<path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>';
+const VOL_ON    = '<path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.06c1.48-.73 2.5-2.25 2.5-4.03z"/>';
+const VOL_OFF   = '<path d="M3 9v6h4l5 5V4L7 9H3z"/><line x1="23" y1="9" x2="17" y2="15" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><line x1="17" y1="9" x2="23" y2="15" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>';
+
+let playing = false, muted = false;
+
+function setPlay(on) {
     playing = on;
     plIcon.innerHTML = on ? PAUSE_SVG : PLAY_SVG;
     plSpin.className = on ? 'pl-spin on' : 'pl-spin';
@@ -1036,56 +1630,65 @@
     plState.className = on ? 'pl-state on' : 'pl-state';
     const heroSvg = document.querySelector('#hero-play svg');
     if (heroSvg) heroSvg.innerHTML = on ? PAUSE_SVG : PLAY_SVG;
-    // Girar logo como disco
     const logoImg = document.querySelector('.pl-logo img');
     if (logoImg) logoImg.style.animation = on ? 'discospin 4s linear infinite' : 'none';
 }
 
-    plPlay.addEventListener('click', () => {
-        if (playing) {
-            audio.pause(); audio.src = ''; setPlay(false);
-        } else {
-            audio.src = STREAM; audio.play().catch(() => {}); setPlay(true);
-        }
-    });
+plPlay.addEventListener('click', () => {
+    if (playing) { audio.pause(); audio.src = ''; setPlay(false); }
+    else         { audio.src = STREAM; audio.play().catch(() => {}); setPlay(true); }
+});
 
-    plMute.addEventListener('click', () => {
-        muted = !muted;
-        audio.muted = muted;
-        plMute.querySelector('svg').innerHTML = muted ? VOL_OFF : VOL_ON;
-        plMute.style.opacity = muted ? '0.35' : '';
-    });
+plMute.addEventListener('click', () => {
+    muted = !muted;
+    audio.muted = muted;
+    plMute.querySelector('svg').innerHTML = muted ? VOL_OFF : VOL_ON;
+    plMute.style.opacity = muted ? '0.35' : '';
+});
 
-    const heroPlay = document.getElementById('hero-play');
+const heroPlay = document.getElementById('hero-play');
 heroPlay.addEventListener('click', () => {
     plPlay.click();
-    // Sincronizar ícono del hero con el estado
     setTimeout(() => {
-        heroPlay.querySelector('svg').innerHTML = playing
-            ? '<path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>'
-            : '<polygon points="5,3 19,12 5,21"/>';
+        heroPlay.querySelector('svg').innerHTML = playing ? PAUSE_SVG : PLAY_SVG;
     }, 50);
-    });
+});
 
-    audio.addEventListener('error',   () => { setPlay(false); plState.textContent = 'Sin conexión'; plState.style.color = '#ff7070'; });
-    audio.addEventListener('playing', () => setPlay(true));
-    audio.addEventListener('pause',   () => setPlay(false));
+audio.addEventListener('error',   () => { setPlay(false); plState.textContent = 'Sin conexión'; plState.style.color = '#ff7070'; });
+audio.addEventListener('playing', () => setPlay(true));
+audio.addEventListener('pause',   () => setPlay(false));
 
-    /* ── Scroll reveal ── */
-    function initReveal() {
-        const io = new IntersectionObserver(entries => {
-            entries.forEach(e => {
-                if (e.isIntersecting) { e.target.classList.add('vis'); io.unobserve(e.target); }
-            });
-        }, { threshold: 0.08 });
+/* ── Scroll reveal + contador ── */
+let countersTriggered = false;
 
-        document.querySelectorAll('.r:not(.obs)').forEach(el => {
-            el.classList.add('obs'); io.observe(el);
+function initReveal() {
+    const io = new IntersectionObserver(entries => {
+        entries.forEach(e => {
+            if (e.isIntersecting) {
+                e.target.classList.add('vis');
+                io.unobserve(e.target);
+                // Disparar contadores cuando la sección nosotros sea visible
+                if (!countersTriggered && e.target.closest('#nosotros')) {
+                    countersTriggered = true;
+                    animateCounters();
+                }
+            }
         });
-    }
+    }, { threshold: 0.08 });
 
-    document.addEventListener('DOMContentLoaded', initReveal);
-    setTimeout(initReveal, 600);
+    document.querySelectorAll('.r:not(.obs)').forEach(el => {
+        el.classList.add('obs'); io.observe(el);
+    });
+}
+
+/* ── Init ── */
+document.addEventListener('DOMContentLoaded', () => {
+    renderSchedule();
+    updateNowBadge();
+    initReveal();
+    // Actualizar programa cada minuto
+    setInterval(() => { updateNowBadge(); renderSchedule(); }, 60000);
+});
 </script>
 </body>
 </html>

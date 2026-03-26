@@ -1153,6 +1153,199 @@
         .r.d2 { transition-delay: 0.22s; }
         .r.d3 { transition-delay: 0.34s; }
         .r.vis { opacity: 1; transform: none; }
+        
+        /* ═══════════════════════
+   MODO CLARO
+═══════════════════════ */
+body.light {
+    --blue-deep:   #e8f0fe;
+    --blue-mid:    #1044a3;
+    --blue-bright: #1a6cf6;
+    --blue-light:  #1a6cf6;
+    --blue-pale:   #1a3a6b;
+    --white:       #0b1d3a;
+    --off-white:   #1a3a6b;
+    --surface:     rgba(0,0,0,0.04);
+    --border:      rgba(26,108,246,0.15);
+    background: #f0f4ff;
+    color: #0b1d3a;
+}
+
+body.light header {
+    background: rgba(240,244,255,0.88);
+    border-bottom-color: rgba(26,108,246,0.15);
+}
+
+body.light header.scrolled {
+    background: rgba(230,236,255,0.97);
+}
+
+body.light .drawer {
+    background: #e8f0fe;
+}
+
+body.light #nosotros  { background: #dce6fc; }
+body.light #podcast   { background: #d0dcfa; }
+body.light #programacion,
+body.light #emisoras  { background: #e8f0fe; }
+body.light footer     { background: #d0dcfa; }
+
+body.light .hero-overlay {
+    background:
+        linear-gradient(to bottom,
+            rgba(240,244,255,0.3) 0%,
+            rgba(240,244,255,0.05) 40%,
+            rgba(240,244,255,0.6) 80%,
+            rgba(240,244,255,1) 100%),
+        radial-gradient(ellipse 70% 60% at 50% 10%, rgba(26,108,246,0.12) 0%, transparent 70%);
+}
+
+body.light .prog-item {
+    background: rgba(255,255,255,0.7);
+    border-color: rgba(26,108,246,0.15);
+}
+
+body.light .prog-item:hover { background: rgba(26,108,246,0.08); }
+body.light .prog-item.active-now { background: rgba(74,222,128,0.1); }
+
+body.light .valor-card,
+body.light .info-card,
+body.light .podcast-player-card { background: rgba(255,255,255,0.7); }
+
+body.light .achievement-pill { border-color: rgba(26,108,246,0.3); }
+
+body.light .now-playing-badge {
+    background: rgba(240,244,255,0.85);
+    border-color: rgba(26,108,246,0.25);
+}
+
+body.light .footer-brand p,
+body.light .ft-contact-item,
+body.light .ft-links a { color: #1a3a6b; opacity: 0.7; }
+
+body.light .footer-copy { color: #1a3a6b; }
+
+/* Botón toggle */
+.theme-btn {
+    width: 38px; height: 38px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer;
+    color: var(--off-white);
+    transition: background 0.2s, border-color 0.2s;
+    margin-left: 8px;
+}
+
+.theme-btn:hover {
+    background: rgba(26,108,246,0.15);
+    border-color: rgba(26,108,246,0.35);
+}
+
+body.light #inicio .hero-title,
+body.light #inicio .hero-eyebrow,
+body.light #inicio .hero-sub,
+body.light #inicio .now-playing-badge .now-text {
+    color: white !important;
+}
+body.light #inicio .now-playing-badge .now-text span,
+body.light #inicio .now-playing-badge .now-text strong {
+    color: white !important;
+}
+body.light .now-playing-badge {
+    background: rgba(0,0,0,0.6) !important; /* Fondo semitransparente oscuro para legibilidad */
+    border-color: rgba(255,255,255,0.3) !important;
+}
+body.light .now-dot {
+    background: #4ade80; /* mantener el punto verde */
+}
+
+body.light .hero-photo {
+    filter: brightness(0.9) contrast(1.05);
+}
+
+/* Reproductor flotante en modo claro */
+body.light #player {
+    background: rgba(240, 244, 255, 0.96) !important;
+    border: 1px solid rgba(26, 108, 246, 0.3) !important;
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.15) !important;
+}
+
+body.light .pl-name {
+    color: #0b1d3a !important;
+}
+
+body.light .pl-state {
+    color: #1f4a8a !important;
+    opacity: 1 !important;
+}
+
+body.light .pl-state.on {
+    color: #0f7b3a !important; /* verde más oscuro para el estado "Reproduciendo" */
+}
+
+body.light .pl-btn {
+    background: rgba(26, 108, 246, 0.1) !important;
+    border-color: rgba(26, 108, 246, 0.3) !important;
+    color: #0b1d3a !important;
+}
+
+body.light .pl-btn:hover {
+    background: rgba(26, 108, 246, 0.2) !important;
+    border-color: rgba(26, 108, 246, 0.5) !important;
+}
+
+body.light .pl-btn.primary {
+    background: #1a6cf6 !important;
+    color: white !important;
+}
+
+body.light .pl-btn.primary:hover {
+    background: #3d8bff !important;
+}
+
+body.light .pl-logo .pl-ring {
+    border-color: rgba(26, 108, 246, 0.4) !important;
+}
+
+body.light .pl-spin {
+    border-top-color: #1a6cf6 !important;
+}
+
+body.light .pl-logo img {
+    filter: brightness(0.95) contrast(1.1);
+}
+/* Estilo base para los botones sociales */
+.ft-soc {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.2);
+    transition: background 0.2s, border-color 0.2s, transform 0.2s;
+}
+.ft-soc:hover {
+    transform: translateY(-2px);
+    background: rgba(255,255,255,0.15);
+    border-color: rgba(255,255,255,0.4);
+}
+
+body.light .ft-soc {
+    background: rgba(0,0,0,0.05);
+    border-color: rgba(0,0,0,0.1);
+}
+body.light .ft-soc:hover {
+    background: rgba(0,0,0,0.1);
+    border-color: rgba(0,0,0,0.2);
+}
+.ft-soc {
+  color: #E4405F;
+  display: inline-flex;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.ft-soc:hover {
+  color: #c13584;
+  transform: scale(1.1);
+}
     </style>
 </head>
 <body>
@@ -1175,6 +1368,20 @@
         <a href="#programacion">Programación</a>
         <a href="#emisoras">Territorios Al Aire</a>
     </nav>
+    
+<button class="theme-btn" id="theme-btn" aria-label="Cambiar tema" title="Cambiar tema">
+    <svg id="theme-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="12" cy="12" r="5"/>
+        <line x1="12" y1="1" x2="12" y2="3"/>
+        <line x1="12" y1="21" x2="12" y2="23"/>
+        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+        <line x1="1" y1="12" x2="3" y2="12"/>
+        <line x1="21" y1="12" x2="23" y2="12"/>
+        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+    </svg>
+</button>
 
     <button class="ham" id="ham" aria-label="Menú">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
@@ -1458,16 +1665,45 @@
             <div class="ft-name">Ebenezer Stereo 88.2 FM</div>
             <p>
                 Emisora cristiana comunitaria<br>
-                <!-- EDITAR --> La paz, Cesar, Colombia
+                 La paz, Cesar, Colombia
             </p>
-            <div class="ft-social">
-                <a href="https://facebook.com/ebenezercentral" target="_blank" aria-label="Facebook" class="ft-soc">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
-                </a>
-                <a href="https://youtube.com/@ebenezercentral" target="_blank" aria-label="YouTube" class="ft-soc">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="#060e1e"/></svg>
-                </a>
-            </div>
+            
+<div class="ft-social">
+    <!-- Facebook  -->
+    <a href="https://facebook.com/ebenezercentral" target="_blank" aria-label="Facebook" class="ft-soc">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="#1877f2">
+            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+        </svg>
+    </a>
+    <!-- YouTube -->
+    <a href="https://youtube.com/@ebenezercentral" target="_blank" aria-label="YouTube" class="ft-soc">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="#ff0000">
+            <path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/>
+            <polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="#ffffff"/>
+        </svg>
+    </a>
+
+<a href="https://www.instagram.com/emisoraebenezerstereo?igsh=MWZqYmlrNGprdXE2dA==" 
+   target="_blank" 
+   rel="noopener noreferrer"
+   aria-label="Instagram" 
+   class="ft-soc">
+
+  <svg xmlns="http://www.w3.org/2000/svg" 
+       viewBox="0 0 24 24" 
+       width="24" 
+       height="24" 
+       fill="currentColor">
+
+    <path d="M7.75 2h8.5C19.44 2 22 4.56 22 7.75v8.5C22 19.44 19.44 22 16.25 22h-8.5C4.56 22 2 19.44 2 16.25v-8.5C2 4.56 4.56 2 7.75 2zm0 2C5.68 4 4 5.68 4 7.75v8.5C4 18.32 5.68 20 7.75 20h8.5c2.07 0 3.75-1.68 3.75-3.75v-8.5C20 5.68 18.32 4 16.25 4h-8.5z"/>
+    
+    <path d="M12 7a5 5 0 100 10 5 5 0 000-10zm0 2a3 3 0 110 6 3 3 0 010-6z"/>
+    
+    <circle cx="17.5" cy="6.5" r="1.25"/>
+    
+  </svg>
+</a>
+</div>
         </div>
 
         <!-- Columna 2: Links rápidos -->
@@ -1506,7 +1742,7 @@
             </div>
         </div>
     </div>
-    <div class="footer-copy">&copy; 2025 Ebenezer Stereo · La paz · Colombia · 88.2 FM · Todos los derechos reservados</div>
+    <div class="footer-copy">&copy; 2025 Ebenezer Stereo · La paz · Colombia · 88.2 FM/Online · Todos los derechos reservados</div>
 </footer>
 
 <script>
@@ -1689,6 +1925,25 @@ document.addEventListener('DOMContentLoaded', () => {
     // Actualizar programa cada minuto
     setInterval(() => { updateNowBadge(); renderSchedule(); }, 60000);
 });
+/* ── Toggle tema oscuro/claro ── */
+const MOON = `<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" fill="none" stroke="currentColor" stroke-width="2"/>`;
+const SUN  = `<circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>`;
+
+const themeBtn  = document.getElementById('theme-btn');
+const themeIcon = document.getElementById('theme-icon');
+let isLight = localStorage.getItem('theme') === 'light';
+
+function applyTheme(light) {
+    isLight = light;
+    document.body.classList.toggle('light', light);
+    themeIcon.innerHTML = light ? MOON : SUN;
+    localStorage.setItem('theme', light ? 'light' : 'dark');
+}
+
+themeBtn.addEventListener('click', () => applyTheme(!isLight));
+
+// Aplicar tema guardado al cargar
+applyTheme(isLight);
 </script>
 </body>
 </html>

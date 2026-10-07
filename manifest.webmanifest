@@ -1,0 +1,25 @@
+{
+    "name": "Ebenezer Stereo 88.2 FM",
+    "short_name": "Ebenezer",
+    "description": "Emisora cristiana comunitaria de La Paz, Cesar. El poder de la palabra, en vivo.",
+    "lang": "es-CO",
+    "dir": "ltr",
+    "id": "./",
+    "start_url": "./?app=1",
+    "scope": "./",
+    "display": "standalone",
+    "orientation": "portrait",
+    "background_color": "#0A1220",
+    "theme_color": "#0A1220",
+    "categories": ["music", "entertainment", "lifestyle"],
+    "icons": [
+        { "src": "assets/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+        { "src": "assets/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+        { "src": "assets/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" },
+        { "src": "assets/favicon.svg", "sizes": "any", "type": "image/svg+xml" }
+    ],
+    "shortcuts": [
+        { "name": "Programación", "url": "./#programacion", "icons": [{ "src": "assets/icon-192.png", "sizes": "192x192" }] },
+        { "name": "Pedir oración", "url": "./#contacto", "icons": [{ "src": "assets/icon-192.png", "sizes": "192x192" }] }
+    ]
+}
